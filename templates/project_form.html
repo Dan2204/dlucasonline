@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+<!-- bootstrap -->
+{% include 'bootstrap/base.html' %}
+<!-- bootstrap quickform -->
+{% import "bootstrap/wtf.html" as wtf %}
+
+<!-- PAGE CONTENT -->
+{% block content %}
+
+<div class="user_form_container">
+  {% with messages = get_flashed_messages() %} {% if messages %} {% for message in
+  messages %}
+  <p style="color: #ff3333; text-align: center; margin-bottom: 1em">{{ message }}</p>
+  {% endfor %} {% endif %} {% endwith %}
+  <div class="user_form">
+    <h2>{{ title }}</h2>
+    {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+  </div>
+</div>
+
+{% endblock content %}

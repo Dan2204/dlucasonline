@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+<!-- PAGE CONTENT -->
+{% block content %}
+
+<section class="intro" id="intro">
+  <h1 class="section__title section__title--intro">
+    Website <span>Driving School</span>
+  </h1>
+  <img
+    src="{{ url_for('static', filename='images/phoenixpoetry.png') }}"
+    alt=""
+    class="intro__img"
+  />
+  <p class="section__subtitle section__subtitle--intro">Driving instructor website</p>
+</section>
+
+<div class="portfolio-item__details">
+  <div class="portfolio-item__content">
+    <div class="portfolio-item__info">
+      <div class="portfolio-item__text">
+        <h3>The Project...</h3>
+        <p>
+          Matt approached me about building his website for him. A recovering alcoholic,
+          he found solace in writing poetry. This site is a poetry site, complete with an
+          administration dashboard, allowing Matt to upload poems and images wherever he
+          is. People can register, sign in and leave comments on poems. The admin
+          dashboard can manage all of this functionality.
+        </p>
+        <p>
+          This webiste was build with Flask on the backend using SQLAlchemy for the
+          database management. Front end utilized Bootstrap for the navigation bar and
+          grid layout.
+        </p>
+        <p>Languages: Python Flask, HTML, Css, Javascript</p>
+      </div>
+      <img
+        src="{{ url_for('static', filename='images/phoenix-dashboard.png') }}"
+        alt=""
+      />
+    </div>
+    <div class="btn__options">
+      <a href="#" class="btn btn__portfolio" style="margin-right: 1em">View On Github</a>
+      <a href="https://www.phoenixpoetry.co.uk/" target="blank" class="btn btn__portfolio"
+        >View site</a
+      >
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

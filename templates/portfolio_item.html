@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+<!-- PAGE CONTENT -->
+{% block content %}
+
+<section class="intro project-item" id="intro">
+  <h1 class="section__title section__title--intro section__title_portfolio--intro">
+    {{ project.project_type }}: <span>{{ project.title }}</span>
+  </h1>
+  <img
+    src="{{ url_for('static', filename='images/' + project.main_img) }}"
+    alt=""
+    class="intro__img"
+  />
+  <p class="section__subtitle section__subtitle--intro">{{ project.sub_title }}</p>
+</section>
+
+<div class="portfolio-item__details">
+  {% if current_user.is_authenticated %}
+  <a href="{{ url_for('edit_project', project_id=project.id) }}" class="btn">Edit</a>
+  {% endif %}
+  <div class="portfolio-item__content">
+    <div class="portfolio-item__info">
+      <div class="portfolio-item__text">
+        <h3>The Project...</h3>
+        <p>{{ project.project_general }}</p>
+        <p>{{ project.project_tools }}</p>
+        <p>Languages: {{ project.project_languages }}</p>
+      </div>
+      <img
+        src="{{ url_for('static', filename='images/' + project.project_img) }}"
+        alt=""
+      />
+    </div>
+    <div class="btn__options">
+      <a
+        href="https://{{ project.github_link }}"
+        target="blank"
+        class="btn btn__portfolio"
+        style="margin-right: 1em"
+        >View On Github</a
+      >
+      {% if project.website_link %}
+      <a
+        href="https://{{ project.website_link }}"
+        target="blank"
+        class="btn btn__portfolio"
+        >View site</a
+      >
+      {% endif %}
+    </div>
+  </div>
+</div>
+<section class="my-work__portfolio" id="work">
+  <p class="section__subtitle section__subtitle--my-work">Other projects</p>
+  <div class="portfolio">
+    {% if projects %} {% for project in projects %}
+    <!-- Portfolio image 1 -->
+    <a
+      href="{{ url_for('portfolio_page', project_id=project.id) }}"
+      class="portfolio__item"
+    >
+      <div class="img_wrapper">
+        <h3 class="img_title">{{ project.title }}</h3>
+        <img
+          src="{{ url_for('static', filename='images/' + project.main_img) }}"
+          alt=""
+          class="portfolio__img"
+        />
+      </div>
+    </a>
+    {% endfor %} {% endif %}
+  </div>
+</section>
+
+{% endblock content %}

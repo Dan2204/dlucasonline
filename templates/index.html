@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+<!-- PAGE CONTENT -->
+{% block content %}
+
+<section class="intro home" id="intro">
+  <h1 class="section__title section__title--intro">Hi, I'm <span>Dan Lucas</span></h1>
+
+  <p class="section__subtitle section__subtitle--intro">Python Developer</p>
+</section>
+
+<section class="my-services" id="services">
+  <h2 class="section__title section__title--services">What I do</h2>
+  <div class="services">
+    <div class="service">
+      <h3>Fullstack Development</h3>
+      <p>Building your static/dynamic website from start to deployment:</p>
+      <ul class="service-skills__list">
+        <li class="service-skills__li">Flask</li>
+        <li class="service-skills__li">Flask SQLAlchemy</li>
+        <li class="service-skills__li">RESTful API</li>
+        <li class="service-skills__li">Jinja Templating</li>
+        <li class="service-skills__li">HTML, CSS, JS</li>
+      </ul>
+    </div>
+    <!-- end service -->
+    <div class="service">
+      <h3>Python Scripts</h3>
+      <p>Automating daily tasks to make life easier:</p>
+      <ul>
+        <li>Web Scraping</li>
+        <li>Api Integrations</li>
+        <li>File Conversions</li>
+        <li>Object Orientated Programming(OOP)</li>
+        <li>Tkinter for GUI</li>
+      </ul>
+    </div>
+    <!-- end service -->
+    <div class="service">
+      <h3>Start-up Dev</h3>
+      <p>
+        Have an idea for a start up? I can help turn your idea into a web app.<br /><br />
+        Designing the back end and building the database<br /><br />
+        From your idea to a functioning web app!
+      </p>
+    </div>
+    <!-- end service -->
+  </div>
+  <!-- end services -->
+  <a href="#work" class="btn">My work</a>
+</section>
+
+<section class="about" id="about">
+  <h2 class="section__title section__title--about">Who am I?</h2>
+  <p class="section__subtitle section__subtitle--about">
+    Python developer based in Aylesbury
+  </p>
+  <div class="about__body">
+    <p>
+      I'm primarily a Python developer but have dabbled with Node, Solidity and Java. I'm
+      most comfortable with Python and whenever the heat is on, I will always have my
+      trusted encylopedia(Google!) not too far away.
+    </p>
+    <p>
+      Building websites, I have a firm understanding of HTML, CSS and Javascript. I
+      sometimes use Bootstrap for layout or navigation; depending on the circumstances;
+      but will try to avoid front end frameworks for a bespoke feel.
+    </p>
+  </div>
+  <img
+    src="{{ url_for('static', filename='images/profile_image.jpg') }}"
+    alt=""
+    class="about__img"
+  />
+</section>
+
+<section class="my-work" id="work">
+  <h2 class="section__title section__title--my-work">My Work</h2>
+  <p class="section__subtitle section__subtitle--my-work">A selection of my work</p>
+  <div class="portfolio">
+    {% if projects %} {% for project in projects %}
+    <!-- Portfolio image 1 -->
+    <a
+      href="{{ url_for('portfolio_page', project_id=project.id) }}"
+      class="portfolio__item"
+    >
+      <div class="img_wrapper">
+        <h3 class="img_title">{{ project.title }}</h3>
+        <img
+          src="{{ url_for('static', filename='images/' + project.main_img) }}"
+          alt=""
+          class="portfolio__img"
+        />
+      </div>
+    </a>
+    {% endfor %} {% endif %}
+  </div>
+</section>
+
+{% endblock content %}
